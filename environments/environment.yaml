@@ -1,0 +1,81 @@
+name: geo_toolz
+channels:
+  - conda-forge
+  - pyviz
+dependencies:
+  - python=3.11
+  # Processing Packages
+  - numpy
+  - scipy
+  - scikit-learn
+  - scikit-image
+  - xarray
+  - pandas
+  - regionmask
+  - rioxarray
+  - geocube
+  - odc-geo
+  - xarray-einstats
+  - xskillscore
+  - xrft
+  - xeofs
+  - metpy
+  - pyinterp
+  - gcm_filters
+  - xcdat
+  - dask-core
+  # DATASETS
+  - xmip
+  - cf_xarray
+  - cftime
+  - intake-esm
+  - xee
+  - netCDF4
+  - zarr
+  # VISUALIZATION
+  - cartopy
+  - cmocean
+  - seaborn
+  - matplotlib
+  - xmovie
+  - ffmpeg
+  - nc-time-axis
+  - pyviz::geoviews-core
+  # Good Code
+  - scalene
+  # Jupyter Stuff
+  - ipykernel
+  - pip
+  - pip:
+      # DATA
+      - copernicusmarine
+      - climetlab
+      - cdsapi
+      - gcsfs
+      # Processing Packages
+      - xarray-dataclasses
+      - xarray-regrid
+      - toolz
+      - python-dateutil
+      - joblib
+      - mlx-data
+      - pypeln
+      # Clean Code
+      - cookiecutter
+      - autoroot
+      - pydantic
+      - loguru
+      - typer
+      - isort
+      - black
+      - ruff
+      - pre-commit
+      # Configurations
+      - hydra-core
+      - hydra-zen
+      # OTHER
+      # VISUALIZATION
+      - terracotta
+      - lexcube
+      - tqdm
+

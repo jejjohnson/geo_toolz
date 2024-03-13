@@ -1,0 +1,9 @@
+format: jb-book
+root: ./notebooks/index.md
+chapters:
+  - title: Notes
+    sections:
+      - file: ./notebooks/software.md
+  - title: GeoOperations
+    sections:
+      - file: ./notebooks/geo_ops/geo_ops_intro
