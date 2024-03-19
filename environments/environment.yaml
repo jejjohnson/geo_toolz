@@ -17,6 +17,7 @@ dependencies:
   - odc-geo
   - xarray-einstats
   - xskillscore
+  - boost_histogram
   - xrft
   - xeofs
   - metpy
@@ -70,6 +71,7 @@ dependencies:
       - black
       - ruff
       - pre-commit
+      - pytest
       # Configurations
       - hydra-core
       - hydra-zen

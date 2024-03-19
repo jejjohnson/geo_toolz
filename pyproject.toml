@@ -79,7 +79,7 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.pytest.ini_options]
-testpaths = ["oceanbench"]
+testpaths = ["geo_toolz"]
 
 
 [tool.ruff]
