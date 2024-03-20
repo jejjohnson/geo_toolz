@@ -12,6 +12,7 @@ GEE_ERA5_DATASETS_NAMES = dict(
     era5_monthly="ECMWF/ERA5/MONTHLY"
 )
 
+
 def download_era5_gee(dataset: str, bbox: Optional[RegularLonLat]=None, crs: str="EPSG:4326", scale: Optional[float]=None) -> xr.Dataset:
 
     # initialize GEE

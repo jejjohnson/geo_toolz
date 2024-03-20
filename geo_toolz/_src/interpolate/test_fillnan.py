@@ -1,6 +1,7 @@
 import numpy as np
 import xarray as xr
-from fillnan import fillnan_gauss_seidel
+from .fillnan import fillnan_gauss_seidel
+
 
 def test_fillnan_gauss_seidel():
     # Create a sample dataset with NaN values
@@ -25,3 +26,4 @@ def test_fillnan_gauss_seidel():
 
     # Add more test cases to cover different scenarios
     # ...
+    pass

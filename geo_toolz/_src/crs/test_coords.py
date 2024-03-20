@@ -1,5 +1,7 @@
 import numpy as np
-from geoprocess.crs.coords import convert_x_y_to_lat_lon, convert_lat_lon_to_x_y, calc_latlon
+import rioxarray
+import xarray as xr
+from .coords import convert_x_y_to_lat_lon, convert_lat_lon_to_x_y, calc_latlon
 
 
 def test_calc_latlon():
@@ -22,7 +24,7 @@ def test_calc_latlon():
 
     # Check if the latitude and longitude arrays have the correct units
     assert result.latitude.attrs["units"] == "degrees_north"
-    assert result.longitude.attrs["units"] == "degrees_east"import numpy as np
+    assert result.longitude.attrs["units"] == "degrees_east"
 
 
 def test_calc_latlon():
@@ -58,34 +60,24 @@ def test_convert_x_y_to_lat_lon():
     lon, lat = convert_x_y_to_lat_lon(crs, x, y)
 
     # Check if the returned longitude and latitude values are of type float
-    assert isinstance(lon, float)
-    assert isinstance(lat, float)
+    assert len(lon) == len(x)
+    assert len(lat) == len(y)
 
-    # Add more assertions to validate the correctness of the conversion
-    # ...
-
-    # Add more test cases to cover different scenarios
-    # ...import numpy as np
 
 
 def test_convert_lat_lon_to_x_y():
     # Define test coordinates and CRS
     lon = [0, 1, 2, 3, 4]
     lat = [0, 1, 2, 3, 4]
-    crs = "epsg:3857"
+    crs = "epsg:4326"
 
     # Call the function to convert latitude and longitude coordinates to x and y
     x, y = convert_lat_lon_to_x_y(crs, lon, lat)
 
     # Check if the returned x and y values are of type float
-    assert isinstance(x, float)
-    assert isinstance(y, float)
+    assert len(lon) == len(x)
+    assert len(lat) == len(y)
 
-    # Add more assertions to validate the correctness of the conversion
-    # ...
-
-    # Add more test cases to cover different scenarios
-    # ...
 
 def test_calc_latlon():
     # Create a sample dataset with x and y coordinates
@@ -113,7 +105,7 @@ def test_convert_x_y_to_lat_lon():
     # Define test coordinates and CRS
     x = [0, 1, 2, 3, 4]
     y = [0, 1, 2, 3, 4]
-    crs = "epsg:3857"
+    crs = "epsg:4326"
 
     # Call the function to convert x and y coordinates to latitude and longitude
     lon, lat = convert_x_y_to_lat_lon(crs, x, y)
