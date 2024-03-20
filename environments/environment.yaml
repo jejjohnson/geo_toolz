@@ -17,7 +17,7 @@ dependencies:
   - odc-geo
   - xarray-einstats
   - xskillscore
-  - boost_histogram
+  - boost-histogram
   - xrft
   - xeofs
   - metpy
@@ -33,6 +33,8 @@ dependencies:
   - xee
   - netCDF4
   - zarr
+  - earthengine-api
+  - google-cloud-sdk
   # VISUALIZATION
   - cartopy
   - cmocean
@@ -42,6 +44,7 @@ dependencies:
   - ffmpeg
   - nc-time-axis
   - pyviz::geoviews-core
+  - geemap
   # Good Code
   - scalene
   # Jupyter Stuff

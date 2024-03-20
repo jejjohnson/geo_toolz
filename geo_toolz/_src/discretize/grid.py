@@ -5,13 +5,15 @@ import pyinterp
 from odc.geo.xr import xr_coords
 from odc.geo.geom import BoundingBox
 from odc.geo.geobox import GeoBox
+from odc.geo.geom import Geometry
+from odc.geo.crs import CRS
 from geo_toolz._src.validation.coords import validate_latitude, validate_longitude
 from geo_toolz._src.discretize.period import Period
+import regionmask
 
 
 @dataclass
 class RegularLonLat:
-    bbox: BoundingBox
     resolution: float
     gbox: GeoBox
     coordinates: xr.Dataset
@@ -29,7 +31,33 @@ class RegularLonLat:
         coords = xr.Dataset(xr_coords(gbox))
         coords = validate_latitude(coords)
         coords = validate_longitude(coords)
-        return cls(bbox=bbox, resolution=resolution, gbox=gbox, coordinates=coords)
+        return cls(resolution=resolution, gbox=gbox, coordinates=coords)
+    
+    @property
+    def bbox(self):
+        return self.gbox.boundingbox
+    
+    @classmethod
+    def init_from_country(cls, country: str, resolution: float):
+
+        # get countries
+        countries = regionmask.defined_regions.natural_earth_v5_0_0.countries_110
+
+        # get polygon
+        polygon = countries[country.upper()].polygon
+
+        # convert it to geometry
+        odc_crs = CRS("EPSG:4326")
+        odc_geom = Geometry(geom=polygon, crs=odc_crs)
+        
+        # initialize geobox
+        gbox = GeoBox.from_geopolygon(odc_geom, resolution=resolution, crs=odc_crs)
+
+        # create xarray coordinates
+        coords = xr.Dataset(xr_coords(gbox))
+        coords = validate_latitude(coords)
+        coords = validate_longitude(coords)
+        return cls(resolution=resolution, gbox=gbox, coordinates=coords)
 
     @property
     def binning(self):
@@ -89,3 +117,14 @@ class RegularLonLatTime:
             x=pyinterp.Axis(self.coordinates.lon.values),
             y=pyinterp.Axis(self.coordinates.lat.values),
         )
+
+
+def init_bounds_from_country(country: str="spain") -> BoundingBox:
+
+    # get countries
+    countries = regionmask.defined_regions.natural_earth_v5_0_0.countries_110
+
+    # select country
+    country = countries[country]
+
+    return None
