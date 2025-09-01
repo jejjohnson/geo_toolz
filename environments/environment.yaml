@@ -3,9 +3,9 @@ channels:
   - conda-forge
   - pyviz
 dependencies:
-  - python=3.11
+  - python=3.12
   # Processing Packages
-  - numpy
+  - numpy>=2.0
   - scipy
   - scikit-learn
   - scikit-image
@@ -53,9 +53,10 @@ dependencies:
   - pip:
       # DATA
       - copernicusmarine
-      - climetlab
+      # - climetlab
       - cdsapi
       - gcsfs
+      - python_aemet
       # Processing Packages
       - xarray-dataclasses
       - xarray-regrid
