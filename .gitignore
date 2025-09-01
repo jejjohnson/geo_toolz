@@ -16,3 +16,4 @@
 \_build/
 *.grib*
 *.env*
+\notebooks/dev
